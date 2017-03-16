@@ -10,8 +10,10 @@ export class HttpService {
 
     getData() {
     //Maps one observable into another observable
-      return this.http.get('https://k00203819-assignment1.firebaseio.com/products.json')
-        .map((response: Response) => response.json());
+      return this.http.get('https://k00203819-assignment1.firebaseio.com/data.json')
+        .map((response: Response) => response.json())
+
+        .do(response => console.log(response));
     }
 
     sendData(user: any) {

@@ -9,9 +9,19 @@ import { Response } from '@angular/http';
   styles: [],
   providers: [HttpService]
 })
+
 export class HomePageComponent /*implements OnInit*/ {
 
   constructor(private httpService: HttpService) { }
+
+  asyncString = this.httpService.getData();
+
+
+  printMe() {
+    console.log(this.asyncString);
+  }
+
+  //printMe();
 
   /*ngOnInit() {
     //Calls Observable, but needs to be subscribed to.
@@ -28,4 +38,5 @@ export class HomePageComponent /*implements OnInit*/ {
         data=> console.log(data)
       );
   }
+
 }
