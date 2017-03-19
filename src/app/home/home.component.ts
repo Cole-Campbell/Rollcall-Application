@@ -16,8 +16,10 @@ export class HomeComponent {
     console.log(auth));
   }
 
-   addItem(newName: string) {
-   this.items.push({name: newName});
+   addItem(newName: string, newEmail: string) {
+    //All items for a single object get pushed in one push, not in one function.
+     // Multiple Push creates many new objects
+   this.items.push({name: newName, email: newEmail});
    }
 
    updateItem(key: string, newText: string) {
