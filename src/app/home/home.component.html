@@ -1,0 +1,14 @@
+<ul>
+  <li *ngFor="let item of items | async">
+    <input type="text" #updatetext [value]="item.name" />
+    <button (click)="updateItem(item.$key, updatetext.value)">Update</button>
+    <button (click)="deleteItem(item.$key)">Delete</button>
+  </li>
+</ul>
+<input type="text" #newitem />
+<button (click)="addItem(newitem.value)">Add</button>
+<button (click)="deleteEverything()">Delete All</button>
+
+<!-- Dive deeper into the object passed back by google to retrieve the user's email address.
+ This will be used to identify which groups are theirs.-->
+<div> {{ (af.auth | async )?.google.email}}</div>

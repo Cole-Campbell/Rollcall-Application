@@ -1,6 +1,40 @@
 import { Component } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2'
+import { Router } from '@angular/router';
 
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+
+  public isLoggedIn: boolean;
+
+  constructor(public afService: AngularFire, private router: Router){
+    //Checks to see if the user is logged in or not.
+    this.afService.auth.subscribe(
+      (auth) => {
+        if (auth == null) {
+          console.log("Not Logged in.");
+          this.router.navigate(['login']);
+          this.isLoggedIn = false;
+        }
+        else if (auth != null) {
+          console.log("Successfully Logged In.");
+          this.isLoggedIn = true;
+          this.router.navigate(['']);
+        }
+      }
+    );
+  }
+
+  logout() {
+    this.afService.auth.logout();
+  }
+
+}
 /*@Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -86,7 +120,7 @@ export class AppComponent {
 }
 */
 
-//Login
+/*Login
 
 @Component({
   selector: 'app-root',
@@ -108,3 +142,4 @@ export class AppComponent {
     this.af.auth.logout();
   }
 }
+*/
