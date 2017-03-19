@@ -1,10 +1,10 @@
-import { WDPPage } from './app.po';
+import { TestingFirePage } from './app.po';
 
-describe('wdp App', () => {
-  let page: WDPPage;
+describe('testing-fire App', () => {
+  let page: TestingFirePage;
 
   beforeEach(() => {
-    page = new WDPPage();
+    page = new TestingFirePage();
   });
 
   it('should display message saying app works', () => {

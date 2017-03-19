@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class WDPPage {
+export class TestingFirePage {
   navigateTo() {
     return browser.get('/');
   }
