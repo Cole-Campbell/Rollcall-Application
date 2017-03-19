@@ -27,7 +27,7 @@ Object Display
   <button (click)="delete()">Delete</button>
   `,
 })
-
+//CRUD Operations for Angular Fire Objects
 export class AppComponent {
   item: FirebaseObjectObservable<any>;
   constructor(af: AngularFire) {
