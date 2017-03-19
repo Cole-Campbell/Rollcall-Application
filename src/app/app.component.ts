@@ -45,7 +45,7 @@ export class AppComponent {
 }
 */
 
-//Create list observable
+//CRUD Operation for list observable
 /*@Component({
   selector: 'app-root',
   template: `
