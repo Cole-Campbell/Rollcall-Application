@@ -9,6 +9,12 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class HomeComponent {
 
   items: FirebaseListObservable<any>;
+
+  myOptions = [
+    {value: 1, name: "one"},
+    {value: 2, name: "two"},
+    {value: 3, name: "three"}];
+
   constructor(public af: AngularFire) {
     this.items = af.database.list('/Students');
 
@@ -22,8 +28,8 @@ export class HomeComponent {
    this.items.push({name: newName, email: newEmail, archive: 0});
    }
 
-   updateItem(key: string, newText: string) {
-   this.items.update(key, {name: newText});
+   updateItem(key: string, updateText: string) {
+   this.items.update(key, {name: updateText});
    }
 
    deleteItem(key: string) {
