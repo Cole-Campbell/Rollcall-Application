@@ -15,8 +15,8 @@ Google, ensuring there is a level of protection. Students are currently shows if
     <button (click)="archiveItem(item.$key)">Archive</button>
   </p>
 </div>
-<input type="text" #newitem required />
-<input type="hidden" value="{{ (af.auth | async )?.auth.email}}" #newEmail />
+<input type="text" id="name" [(ngModel)]="model.name" name="name" #newitem required />
+<input type="hidden" id="email" [(ngModel)]="model.email" name="email" value="{{ (af.auth | async )?.auth.email}}" #newEmail />
 <button (click)="addItem(newitem.value, newEmail.value, classID.value)">Add</button>
 <button (click)="deleteEverything()">Delete All</button>
 <hr/>
@@ -24,10 +24,10 @@ Google, ensuring there is a level of protection. Students are currently shows if
  of the classes as they want, but the value currently passed is the highest/first id selected -->
 <div>
   <label for="classID">Class List</label>
-  <select #classID multiple id="classID"  name="classID">
-    <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
+  <select #classID multiple id="classID" [(ngModel)]="model.classId" name="classId">
+    <option *ngFor="let classList of classes | async " [value]="classList.$key">{{classList.name}}</option>
   </select>
-
+  <p>{{model.classId}}</p>
 </div>
 <hr/>
 

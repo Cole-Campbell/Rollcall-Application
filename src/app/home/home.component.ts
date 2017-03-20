@@ -2,6 +2,8 @@
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
+import { Student } from './student';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,6 +11,8 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 
 export class HomeComponent {
+
+  model = new Student('', '', false, [])
 
   //List observables for both items and classes. Currently, both are being called within
   //the same component as I am working on sending classList IDs to students. This is but
@@ -28,12 +32,14 @@ export class HomeComponent {
     console.log(auth));
   }
 
+    classtest = [];
+
   //Function to add item to the Firebase database. Adding Name, Email, and ClassID at the
   //moment. This will be changed once main development is completed.
    addItem(newName: string, newEmail: string, classId: number[]) {
     //All items for a single object get pushed in one push, not in one function.
      // Multiple Push creates many new objects
-   this.items.push({name: newName, email: newEmail, archive: 0, classId: classId});
+   this.items.push({name: newName, email: newEmail, archive: 0, classId: this.model.classId});
    }
 
    //Function to update items within the Firebase. Currently changes the user's name.
