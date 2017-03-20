@@ -6,6 +6,8 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Firebase Crud</a>
     </div>
+    <!-- If the variable isLoggedIn is true, then the user will see this navigation,
+     including the logout button.-->
     <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><button class="btn btn-danger" (click)="logout()">Logout</button></li>

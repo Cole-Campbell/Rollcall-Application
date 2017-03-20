@@ -10,10 +10,14 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
 
+  //Declaration of variable and giving it a type as it cannot be changed.
   public isLoggedIn: boolean;
 
   constructor(public afService: AngularFire, private router: Router){
-    //Checks to see if the user is logged in or not.
+    //Checks to see if the user is logged in or not. If Auth is null then the user is
+    //redirected to the login page. If true, then they are passed to the homepage.
+    //If they are null, but end up in the homepage, the Firebase is set to write permissions
+    //are set for those who are not null
     this.afService.auth.subscribe(
       (auth) => {
         if (auth == null) {
@@ -30,11 +34,15 @@ export class AppComponent {
     );
   }
 
+  //Logout function to remove the user's loggedin status, pushing them back to the homepage.
   logout() {
     this.afService.auth.logout();
   }
 
 }
+
+//---------------------- Repository of functions
+
 /*@Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
