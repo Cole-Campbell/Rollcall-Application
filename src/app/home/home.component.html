@@ -1,15 +1,17 @@
 <div  *ngFor="let item of items | async">
   <p *ngIf="item.email == (af.auth | async)?.auth.email">
-    <input type="text" #updatetext [value]="item.name" />
-    <button (click)="updateItem(item.$key, updatetext.value)">Update</button>
-    <button (click)="deleteItem(item.$key)">Delete</button>
-
+    <span *ngIf="item.archive === 0">
+      <input type="text" #updatetext [value]="item.name" />
+      <button (click)="updateItem(item.$key, updatetext.value)">Update</button>
+      <button (click)="deleteItem(item.$key)">Delete</button>
+      <button (click)="archiveItem(item.$key)">Archive</button>
+    </span>
   </p>
 </div>
 <input type="text" #newitem />
 
 <input type="hidden" value="{{ (af.auth | async )?.auth.email}}" #newEmail />
-<button (click)="addItem(newitem.value, newEmail.value, newTruth.value)">Add</button>
+<button (click)="addItem(newitem.value, newEmail.value)">Add</button>
 <button (click)="deleteEverything()">Delete All</button>
 <!-- Dive deeper into the object passed back by google to retrieve the user's email address.
  This will be used to identify which groups are theirs.-->

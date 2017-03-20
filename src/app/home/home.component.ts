@@ -19,7 +19,7 @@ export class HomeComponent {
    addItem(newName: string, newEmail: string) {
     //All items for a single object get pushed in one push, not in one function.
      // Multiple Push creates many new objects
-   this.items.push({name: newName, email: newEmail});
+   this.items.push({name: newName, email: newEmail, archive: 0});
    }
 
    updateItem(key: string, newText: string) {
@@ -28,6 +28,10 @@ export class HomeComponent {
 
    deleteItem(key: string) {
    this.items.remove(key);
+   }
+
+   archiveItem(key: string) {
+    this.items.update(key, {archive: 1});
    }
 
    deleteEverything() {
