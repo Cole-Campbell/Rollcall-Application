@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Student } from './student';
 
 @Component({
   selector: 'app-home',
@@ -9,23 +10,22 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class HomeComponent {
 
   items: FirebaseListObservable<any>;
-
-  myOptions = [
-    {value: 1, name: "one"},
-    {value: 2, name: "two"},
-    {value: 3, name: "three"}];
+  classes: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire) {
     this.items = af.database.list('/Students');
+    this.classes = af.database.list('/ClassLists');
 
     this.af.auth.subscribe(auth=>
     console.log(auth));
   }
 
-   addItem(newName: string, newEmail: string) {
+
+
+   addItem(newName: string, newEmail: string, classId: number[]) {
     //All items for a single object get pushed in one push, not in one function.
      // Multiple Push creates many new objects
-   this.items.push({name: newName, email: newEmail, archive: 0});
+   this.items.push({name: newName, email: newEmail, archive: 0, classId: classId});
    }
 
    updateItem(key: string, updateText: string) {

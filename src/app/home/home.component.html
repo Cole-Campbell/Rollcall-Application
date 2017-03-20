@@ -9,9 +9,18 @@
 </div>
 <input type="text" #newitem required />
 <input type="hidden" value="{{ (af.auth | async )?.auth.email}}" #newEmail />
-<button (click)="addItem(newitem.value, newEmail.value)">Add</button>
+<button (click)="addItem(newitem.value, newEmail.value, classID.value)">Add</button>
 <button (click)="deleteEverything()">Delete All</button>
+<hr/>
+<div>
+  <label for="classID">Class List</label>
+  <select #classID multiple id="classID"  name="classID">
+    <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
+  </select>
+
+</div>
+<hr/>
 <!-- Dive deeper into the object passed back by google to retrieve the user's email address.
  This will be used to identify which groups are theirs.-->
 <div> {{ (af.auth | async )?.auth.email}}</div>
-<br/>
+<hr/>
