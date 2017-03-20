@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { Student } from './student';
 
 @Component({
   selector: 'app-home',
