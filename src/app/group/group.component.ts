@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-group',
-  templateUrl: './group.component.html',
+  template: `
+    <h1>{{ (groups | async | json)?.groupId }}</h1>
+  `,
   styleUrls: ['./group.component.css']
 })
 export class GroupComponent implements OnInit {

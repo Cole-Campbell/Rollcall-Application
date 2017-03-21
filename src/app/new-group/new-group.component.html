@@ -1,0 +1,14 @@
+<div>
+  <label>Group Name</label>
+  <input type="text" id="name" #name [(ngModel)]="group.name" name="name" />
+  <input type="hidden" #newEmail id="newEmail" name="newEmail" value="{{(af.auth | async)?.auth.email}}" />
+</div>
+<div>
+  <label>Classes</label>
+  <p>Select one or multiple classes you wish to add in this group.</p>
+  <label for="classID">Class List</label>
+  <select #classID multiple id="classID" [(ngModel)]="group.classId" name="classId">
+    <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
+  </select>
+</div>
+<button (click)="addGroup(newEmail.value)">Create Group</button>

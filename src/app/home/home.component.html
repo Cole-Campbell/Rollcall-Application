@@ -1,6 +1,5 @@
 <div *ngFor="let group of groups | async ">
-  <h2>{{group.name}}</h2>
-  <a [routerLink]="['/group', group.$key]">{{group.name}}</a>
+  <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
   <p><i></i></p>
 </div>
 <hr/>
