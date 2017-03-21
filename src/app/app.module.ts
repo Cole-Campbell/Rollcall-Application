@@ -9,6 +9,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
+import { RoutingModule } from './routing/routing.module';
+import { NewGroupComponent } from './new-group/new-group.component';
+import { GroupComponent } from './group/group.component';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyAu2W5XpOR0Cka0CQo4fB7epIsfcNC2J2k",
   authDomain: "k00203819-assignment1.firebaseapp.com",
@@ -22,24 +26,20 @@ const firebaseAuthConfig = {
   method: AuthMethods.Redirect
 };
 
-const routes: Routes = [
-  {path: '', component: HomeComponent },
-  {path: 'login', component: LoginComponent },
-  {path: '**', redirectTo: 'login', pathMatch: 'full' }
-];
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NewGroupComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    RouterModule.forRoot(routes)
+    RoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

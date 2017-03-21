@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2';
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,7 @@ import { Router } from "@angular/router";
 })
 
 export class LoginComponent {
-  constructor(public af: AngularFire, private router: Router) {}
+  constructor(public af: AngularFire) {}
   login() {
     this.af.auth.login();
   }

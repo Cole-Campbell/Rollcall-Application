@@ -1,8 +1,9 @@
 //Basic imports for use throughout the application
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
 
-import { Student } from './student';
+import { Student } from '../interfaces/student';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +13,15 @@ import { Student } from './student';
 
 export class HomeComponent {
 
+  groups: FirebaseListObservable<any>;
+
+  constructor(public af: AngularFire, private router: Router){
+    this.groups = af.database.list('/Groups');
+  }
 
 
+
+  /*
   //List observables for both items and classes. Currently, both are being called within
   //the same component as I am working on sending classList IDs to students. This is but
   //a test and ClassList IDs will not actually be attached to students.
@@ -63,4 +71,5 @@ export class HomeComponent {
    deleteEverything() {
    this.items.remove();
    }
+   */
 }

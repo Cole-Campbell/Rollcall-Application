@@ -1,38 +1,7 @@
-<!-- Opening Database Student list set to variable item. Repeating through for to
-get all students.
-
-Continuing through if statement to ensure students returned belong to the owner of them.
-This is verified through the use of email as UID from Firebase change if the user if
-deleted from the Authentication table. Emails are forever unique as the user logs in through
-Google, ensuring there is a level of protection. Students are currently shows if they are
- not archived. This was just a test to be used on later feature, classList -->
-<div  *ngFor="let item of items | async">
-  <p *ngIf="item.email == (af.auth | async)?.auth.email && item.archive === 0">
-    <input type="text" #updatetext [value]="item.name" />
-
-    <button (click)="updateItem(item.$key, updatetext.value)">Update</button>
-    <button (click)="deleteItem(item.$key)">Delete</button>
-    <button (click)="archiveItem(item.$key)">Archive</button>
-  </p>
-</div>
-<input type="text" id="name" [(ngModel)]="model.name" name="name" required />
-<input type="hidden" #newEmail value="{{(af.auth | async)?.auth.email}}" />
-
-<button (click)="addItem(newEmail.value)">Add</button>
-<button (click)="deleteEverything()">Delete All</button>
-<hr/>
-<!-- Created multiple option select form element. Currently, the user can select as many
- of the classes as they want, but the value currently passed is the highest/first id selected -->
-<div>
-  <label for="classID">Class List</label>
-  <select multiple id="classID" [(ngModel)]="model.classId" name="classId">
-    <option *ngFor="let classList of classes | async " [value]="classList.$key">{{classList.name}}</option>
-  </select>
-  <p>{{model.classId}}</p>
+<div *ngFor="let group of groups | async ">
+  <h2>{{group.name}}</h2>
+  <a [routerLink]="['/group', group.$key]">{{group.name}}</a>
+  <p><i></i></p>
 </div>
 <hr/>
-
-<!-- Dive deeper into the object passed back by google to retrieve the user's email address.
- This will be used to identify which groups are theirs.-->
-<div> {{ (af.auth | async )?.auth.email}}</div>
-<hr/>
+<button routerLink="newGroup" routerLinkActive="Active">New Group</button>
