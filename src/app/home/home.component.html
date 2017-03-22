@@ -1,23 +1,21 @@
-<span *ngIf="!showArchive">
-  <div *ngFor="let group of groups | async ">
-    <span *ngIf="group.archive == false">
-      <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
+<div *ngFor="let group of groups | async ">
+  <span *ngIf="group.archive == false && !showArchive">
+    <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
+    <button  [routerLink]="['/editGroup', group.$key]">Edit Group</button>
+    <button (click)="archiveGroup(group.$key)">Archive Group</button>
+    <button (click)="deleteGroup(group.$key)">Delete Group</button>
+  </span>
+</div>
 
-      <button  [routerLink]="['/editGroup', group.$key]">Edit Group</button>
-      <button (click)="archiveGroup(group.$key)">Archive Group</button>
-      <button (click)="deleteGroup(group.$key)">Delete Group</button>
-    </span>
-  </div>
-</span>
-<span *ngIf="showArchive">
-  <div *ngFor="let group of groups | async ">
-    <span *ngIf="group.archive == true">
-      <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
-      <button (click)="unarchiveGroup(group.$key)">Unarchive Group</button>
-      <button (click)="deleteGroup(group.$key)">Delete Group</button>
-    </span>
-  </div>
-</span>
+
+<div *ngFor="let group of groups | async ">
+  <span *ngIf="group.archive == true && showArchive">
+    <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
+    <button (click)="unarchiveGroup(group.$key)">Unarchive Group</button>
+    <button (click)="deleteGroup(group.$key)">Delete Group</button>
+  </span>
+</div>
+<hr/>
 <button class="btn btn-primary"
         (click)="toggleArchive()">
         {{ showArchive ? 'Hide' : 'Show' }} Archive

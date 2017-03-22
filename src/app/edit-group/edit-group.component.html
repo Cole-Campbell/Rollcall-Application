@@ -1,0 +1,29 @@
+<div *ngFor="let group of groups | async">
+  <span *ngIf="group.$key == groupId">
+    <h1>{{group.name}}</h1>
+
+    <div>
+      <input type="text" id="updateName" name="updateName" [(ngModel)]="group.name" #updateName required />
+    </div>
+
+    <p>Current selected classes:</p>
+    <ul>
+    <span *ngFor="let v of gas.generateArray(group.classId)">
+      <span *ngFor="let classList of classes | async">
+          <span *ngIf="v == classList.$key">
+            <li>{{classList.name}}</li>
+          </span>
+        </span>
+      </span>
+    </ul>
+
+
+    <div>
+      <select #classID multiple id="classID" [(ngModel)]="group.classId" name="classId">
+        <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
+      </select>
+    </div>
+
+    <button (click)="editGroup(group)">Update Group</button>
+  </span>
+</div>

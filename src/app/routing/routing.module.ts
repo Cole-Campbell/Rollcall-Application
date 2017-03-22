@@ -6,12 +6,15 @@ import { LoginComponent } from '../login/login.component';
 import { HomeComponent } from '../home/home.component';
 import { NewGroupComponent } from '../new-group/new-group.component';
 import { GroupComponent } from '../group/group.component';
+import { EditGroupComponent } from '../edit-group/edit-group.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent },
+
   {path: 'login', component: LoginComponent },
   {path: 'newGroup', component: NewGroupComponent },
   {path: 'group/:$key', component: GroupComponent },
+  {path: 'editGroup/:$key', component: EditGroupComponent },
+  {path: '', component: HomeComponent },
   {path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 

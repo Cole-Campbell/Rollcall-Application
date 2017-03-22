@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { RoutingModule } from './routing/routing.module';
 import { NewGroupComponent } from './new-group/new-group.component';
 import { GroupComponent } from './group/group.component';
+import { EditGroupComponent } from './edit-group/edit-group.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAu2W5XpOR0Cka0CQo4fB7epIsfcNC2J2k",
@@ -32,7 +32,8 @@ const firebaseAuthConfig = {
     LoginComponent,
     HomeComponent,
     NewGroupComponent,
-    GroupComponent
+    GroupComponent,
+    EditGroupComponent
   ],
   imports: [
     BrowserModule,
