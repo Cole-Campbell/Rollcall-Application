@@ -1,11 +1,20 @@
 <div *ngFor="let group of groups | async">
   <div *ngIf="groupId == group.$key">
     <h1>{{group.name}}</h1>
-    <h2>{{group.classId}}</h2>
-    <div *ngFor="let classList of classes | async">
-      <p *ngIf="group.classId == classList.$key">
-        {{classList.name}}
-      </p>
+    <span *ngFor="let v of generateArray(group.classId)">
+      <div *ngFor="let classList of classes | async">
+        <p *ngIf="v == classList.$key">
+          {{classList.name}}
+        </p>
     </div>
+    </span>
   </div>
 </div>
+
+
+<!--
+
+if (group.classId.indexOf(classList.$key) != -1) {
+
+
+-->

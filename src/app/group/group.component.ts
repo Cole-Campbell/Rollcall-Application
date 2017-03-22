@@ -21,10 +21,13 @@ export class GroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.router.url);
-    console.log(this.router.url.split('/')[2]);
+    //console.log(this.router.url);
+    //console.log(this.router.url.split('/')[2]);
     this.groupId = this.router.url.split('/')[2];
+  }
 
+  generateArray(obj){
+    return Object.keys(obj).map((key)=>{ return obj[key]});
   }
 
 }
