@@ -25,6 +25,21 @@ export class HomeComponent {
   }
 
 
+  archiveGroup(key: string) {
+    this.groups.update(key, {archive: 1});
+  }
+
+  unarchiveGroup(key: string) {
+    this.groups.update(key, {archive: 0});
+  }
+
+  //Function to delete items within the Firebase. Basic functionality as it removes
+  //content from the Firebase.
+  deleteGroup(key: string) {
+    this.groups.remove(key);
+  }
+
+
 
   /*
   //List observables for both items and classes. Currently, both are being called within
