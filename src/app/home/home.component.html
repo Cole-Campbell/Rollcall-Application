@@ -1,6 +1,22 @@
-<div *ngFor="let group of groups | async ">
-  <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
-  <p><i></i></p>
-</div>
+<span *ngIf="!showArchive">
+  <div *ngFor="let group of groups | async ">
+    <span *ngIf="group.archive == false">
+      <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
+      <p><i></i></p>
+    </span>
+  </div>
+</span>
+<span *ngIf="showArchive">
+  <div *ngFor="let group of groups | async ">
+    <span *ngIf="group.archive == true">
+      <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
+      <p><i></i></p>
+    </span>
+  </div>
+</span>
+<button class="btn btn-primary"
+        (click)="toggleArchive()">
+        {{ showArchive ? 'Hide' : 'Show' }} Archive
+</button>
 <hr/>
 <button routerLink="newGroup" routerLinkActive="Active">New Group</button>

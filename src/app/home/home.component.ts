@@ -14,9 +14,14 @@ import { Student } from '../interfaces/student';
 export class HomeComponent {
 
   groups: FirebaseListObservable<any>;
+  showArchive: boolean = false;
 
   constructor(public af: AngularFire, private router: Router){
     this.groups = af.database.list('/Groups');
+  }
+
+  toggleArchive(){
+    this.showArchive = !this.showArchive;
   }
 
 
