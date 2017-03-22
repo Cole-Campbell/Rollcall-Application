@@ -1,5 +1,11 @@
 <div *ngFor="let group of groups | async">
   <div *ngIf="groupId == group.$key">
-  <h1>{{group.name}}</h1>
+    <h1>{{group.name}}</h1>
+    <h2>{{group.classId}}</h2>
+    <div *ngFor="let classList of classes | async">
+      <p *ngIf="group.classId == classList.$key">
+        {{classList.name}}
+      </p>
+    </div>
   </div>
 </div>
