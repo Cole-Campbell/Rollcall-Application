@@ -1,29 +1,98 @@
-<div *ngFor="let group of groups | async">
-  <span *ngIf="group.$key == groupId">
-    <h1>{{group.name}}</h1>
+<!--
+<h2>Template Driven Form</h2>
 
-    <div>
-      <input type="text" id="updateName" name="updateName" [(ngModel)]="group.name" #updateName required />
-    </div>
+<form #form="ngForm" (ngSubmit)="submitForm(form.value)">
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" placeholder="John" name="firstName" ngModel required>
+  </div>
 
-    <p>Current selected classes:</p>
-    <ul>
-    <span *ngFor="let v of gas.generateArray(group.classId)">
-      <span *ngFor="let classList of classes | async">
-          <span *ngIf="v == classList.$key">
-            <li>{{classList.name}}</li>
+  <div class="form-group">
+    <label>Activities</label>
+  </div>
+  <label class="checkbox-inline">
+    <input type="checkbox" value="hiking" name="hiking" ngModel> Hiking
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" value="swimming" name="swimming" ngModel> Swimming
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" value="running" name="running" ngModel> Running
+  </label>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>
+-->
+
+
+<h2>Data Driven Form</h2>
+<form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+  <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid}">
+    <label>First Name:</label>
+    <input class="form-control" type="text" placeholder="John" [formControl]="complexForm.controls['firstName']">
+  </div>
+
+  <div class="form-group">
+    <label>Activities</label>
+  </div>
+  <label class="checkbox-inline">
+    <input type="checkbox" value="hiking" name="hiking" [formControl]="complexForm.controls['hiking']">Hiking
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" value="swimming" name="swimming" [formControl]="complexForm.controls['swimming']">Swimming
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" value="eating" name="eating" [formControl]="complexForm.controls['eating']">Eating
+  </label>
+  <div class="form-group">
+    <button type="submit" [disabled]="!complexForm.valid">Submit</button>
+  </div>
+</form>
+
+
+
+
+<!--
+
+<form
+  [formGroup]="form"
+  (ngSubmit)="editGroup(form.value)">
+
+  <div *ngFor="let group of groups | async">
+    <span *ngIf="group.$key == groupId">
+      <h1>{{group.name}}</h1>
+
+      <label for="name">Group Name</label>
+      <div>
+        <input type="text" id="name" name="name" formControlName="name" #updateName required />
+        <div *ngIf="form.controls.name.errors?.pattern">
+          Name is invalid
+        </div>
+      </div>
+
+      <p>Current selected classes:</p>
+      <ul>
+      <span *ngFor="let v of gas.generateArray(group.classId)">
+        <span *ngFor="let classList of classes | async">
+            <span *ngIf="v == classList.$key">
+              <li>{{classList.name}}</li>
+            </span>
           </span>
         </span>
-      </span>
-    </ul>
+      </ul>
 
 
-    <div>
-      <select #classID multiple id="classID" [(ngModel)]="group.classId" name="classId">
-        <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
-      </select>
-    </div>
+      <div>
+        <select #classID multiple id="classID" [(ngModel)]="group.classId" name="classId" required>
+          <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
+        </select>
+      </div>
 
-    <button (click)="editGroup(group)">Update Group</button>
-  </span>
-</div>
+    </span>
+  </div>
+
+  <button type="submit" [disabled]="!form.valid">Save</button>
+
+</form>
+-->
