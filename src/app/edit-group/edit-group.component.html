@@ -31,6 +31,7 @@
   <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid}">
     <label>First Name:</label>
     <input class="form-control" type="text" placeholder="John" [formControl]="complexForm.controls['firstName']">
+    <div class="alert alert-danger" *ngIf="!complexForm.controls['firstName'].isValid">Name must be 5 to 10 letters long.</div>
   </div>
 
   <div class="form-group">
