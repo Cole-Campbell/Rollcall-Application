@@ -1,5 +1,5 @@
 <div *ngFor="let group of groups | async ">
-  <span *ngIf="group.archive == false && !showArchive">
+  <span *ngIf="group.archive == false && !showArchive; ">
     <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
     <button  [routerLink]="['/editGroup', group.$key]">Edit Group</button>
     <button (click)="archiveGroup(group.$key)">Archive Group</button>
