@@ -4,7 +4,6 @@
 export class editGroup {
   constructor(
     public name: string,
-    public archive: boolean,
     public classId: string[]
   ) {}
 }

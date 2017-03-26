@@ -1,29 +1,39 @@
 <div *ngFor="let group of groups | async">
   <span *ngIf="group.$key == groupId">
-    <h1>{{group.name}}</h1>
+    <form #f="ngForm" (ngSubmit)="editGroup(f.value)">
+      <div class="form-group">
+        <label>{{group.name}}</label>
+        <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="group.name" required minlength="3" maxlength="10">
+        <small [hidden]="name.valid || (name.pristine && !f.submitted)" class="text-danger">
+          Name Required. Must be 3 - 10 characters long.
+        </small>
+      </div>
 
-    <div>
-      <input type="text" id="updateName" name="updateName" [(ngModel)]="group.name" #updateName required />
-    </div>
-
-    <p>Current selected classes:</p>
-    <ul>
-    <span *ngFor="let v of gas.generateArray(group.classId)">
-      <span *ngFor="let classList of classes | async">
-          <span *ngIf="v == classList.$key">
-            <li>{{classList.name}}</li>
-          </span>
+      <label>Currently Selected Classes</label>
+      <span *ngFor="let v of gas.generateArray(group.classId)">
+        <span *ngFor="let classList of classes | async">
+          <ul>
+            <li *ngIf="v == classList.$key">{{classList.name}}</li>
+          </ul>
         </span>
       </span>
-    </ul>
+
+      <div class="form-group">
+        <label>Edit Current Selected Classes</label>
+        <br/>
+        <select #classID multiple id="classID" [(ngModel)]="group.classId" name="classId" #classId="ngModel">
+          <option *ngFor="let classList of classes | async " [value]="[classList.$key]" [selected]="group.classId === classList.$key">{{classList.name}}</option>
+          <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
+        </select>
+        <br/>
+        <small [hidden] *ngIf="group.classId.length < 1" class="text-danger">Please select a class for your group.</small>
+      </div>
 
 
-    <div>
-      <select #classID multiple id="classID" [(ngModel)]="group.classId" name="classId">
-        <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
-      </select>
-    </div>
 
-    <button (click)="editGroup(group)">Update Group</button>
+      <button class="btn btn-default" [disabled]="group.classId.length < 1 || group.name == ''" type="submit">Update Group</button>
+      <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
+
+    </form>
   </span>
 </div>

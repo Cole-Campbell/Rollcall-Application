@@ -13,12 +13,10 @@ import { GenerateArrayService } from '../services/generate-array.service';
 })
 export class EditGroupComponent implements OnInit {
 
-  groupId: String;
+  groupId: any;
 
   groups: FirebaseListObservable<any>;
   classes: FirebaseListObservable<any>;
-
-  group = new editGroup('',false,[]);
 
   constructor(public af: AngularFire, private router: Router, public gas: GenerateArrayService) {
     this.groups = af.database.list('/Groups');
@@ -30,8 +28,8 @@ export class EditGroupComponent implements OnInit {
     console.log(this.groupId);
   }
 
-  editGroup(group: any) {
-    this.groups.update(group.$key,{name: group.name, classId: group.classId});
+  editGroup(value: any) {
+    this.groups.update(this.groupId ,{name: value.name, classId: value.classId});
     this.router.navigate(['']);
   }
 
