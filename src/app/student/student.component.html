@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="addStudent(form.value)">
+  <div class="form-group">
+    <label>Group Name</label>
+    <input class="form-control" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}" type="text" placeholder="Student Name" [formControl]="form.controls['name']">
+
+    <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="alert alert-danger">Group Name is Required</div>
+
+    <input class="form-control" [ngClass]="{'has-error':!form.controls['studentId'].valid && form.controls['studentId'].touched}" type="text" placeholder="Student Number" [formControl]="form.controls['studentId']">
+
+  </div>
+
+  <!--<div class="form-group">
+    <label>Class List</label>
+    <p>Select one or multiple classes you wish to add in this group.</p>
+    <select class="form-control" name="classId" [formControl]="form.controls['classId']">
+      <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
+    </select>
+    <div *ngIf="form.controls['classId'].hasError('required') && form.controls['classId'].touched" class="alert alert-danger">A Class is Required</div>
+  </div>-->
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+
+</form>

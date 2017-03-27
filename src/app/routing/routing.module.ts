@@ -7,11 +7,13 @@ import { HomeComponent } from '../home/home.component';
 import { NewGroupComponent } from '../new-group/new-group.component';
 import { GroupComponent } from '../group/group.component';
 import { EditGroupComponent } from '../edit-group/edit-group.component';
+import { StudentComponent } from '../student/student.component';
 
 const routes: Routes = [
 
   {path: 'login', component: LoginComponent },
   {path: 'newGroup', component: NewGroupComponent },
+  {path: 'addStudent', component: StudentComponent},
   {path: 'group/:$key', component: GroupComponent },
   {path: 'editGroup/:$key', component: EditGroupComponent },
   {path: '', component: HomeComponent },
