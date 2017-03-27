@@ -21,16 +21,14 @@ export class StudentComponent {
     this.students = af.database.list('/Students');
 
     this.form = fb.group({
-      'name' : [null, Validators.compose([Validators.required])],
+      'name' : ['', Validators.compose([Validators.required])],
       'email' : [null, Validators.email],
-      'studentId' : [null, Validators.compose([Validators.required, Validators.maxLength(9), Validators.minLength(9)])],
-      'classListId' : [[], Validators.required]
+      'studentId' : ['', Validators.compose([Validators.required, Validators.maxLength(9), Validators.minLength(9)])],
+      'classListId' : [null, Validators.required]
     })
   }
   addStudent(value: any){
-    let myKey: any;
-    myKey = value.studentId;
-    this.students.push({name: value.name, email: '', studentId: value.studentId, classListId: []}).then((value) => { console.log(value.studentId)})
+    this.students.push({name: value.name, email: value.email, studentId: value.studentId, classListId: value.classListId})
     this.router.navigate(['']);
   }
 
