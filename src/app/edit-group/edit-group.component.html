@@ -29,8 +29,6 @@
         <small [hidden] *ngIf="group.classId.length < 1" class="text-danger">Please select a class for your group.</small>
       </div>
 
-
-
       <button class="btn btn-default" [disabled]="group.classId.length < 1 || group.name == ''" type="submit">Update Group</button>
       <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
 

@@ -16,7 +16,14 @@ export class HomeComponent {
   groups: FirebaseListObservable<any>;
   showArchive: boolean = false;
 
+  emailId: any;
+
   constructor(public af: AngularFire, private router: Router){
+
+    af.auth.subscribe(response => {
+      this.emailId = response.auth.email;
+    });
+
     this.groups = af.database.list('/Groups');
   }
 

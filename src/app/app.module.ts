@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
 
@@ -40,7 +40,8 @@ const firebaseAuthConfig = {
     FormsModule,
     HttpModule,
     RoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

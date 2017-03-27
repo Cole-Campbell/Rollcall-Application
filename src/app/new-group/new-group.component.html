@@ -1,14 +1,26 @@
-<div>
-  <label>Group Name</label>
-  <input type="text" id="name" #name [(ngModel)]="group.name" name="name" />
-  <input type="hidden" #newEmail id="newEmail" name="newEmail" value="{{(af.auth | async)?.auth.email}}" />
-</div>
-<div>
-  <label>Classes</label>
-  <p>Select one or multiple classes you wish to add in this group.</p>
-  <label for="classID">Class List</label>
-  <select #classID multiple id="classID" [(ngModel)]="group.classId" name="classId">
-    <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
-  </select>
-</div>
-<button (click)="addGroup(newEmail.value)">Create Group</button>
+<form [formGroup]="form" (ngSubmit)="addGroup(form.value)">
+  <div class="form-group">
+    <label>Group Name</label>
+    <input class="form-control" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}" type="text" placeholder="Group Name" [formControl]="form.controls['name']">
+
+    <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="alert alert-danger">Group Name is Required</div>
+    <div *ngIf="form.controls['name'].hasError('minlength') && form.controls['name'].touched" class="alert alert-danger">Group Name Must Be 3 or More Characters</div>
+    <div *ngIf="form.controls['name'].hasError('maxlength') && form.controls['name'].touched" class="alert alert-danger">Group Name Less Be 10 or More Characters</div>
+
+    <input class="form-control" type="hidden" value="{{(af.auth | async)?.auth.email}}"a [formControl]="form.controls['email']">
+  </div>
+
+  <div class="form-group">
+    <label>Class List</label>
+    <p>Select one or multiple classes you wish to add in this group.</p>
+    <select class="form-control" multiple name="classId" [formControl]="form.controls['classId']">
+      <option *ngFor="let classList of classes | async " [value]="[classList.$key]">{{classList.name}}</option>
+    </select>
+    <div *ngIf="form.controls['classId'].hasError('required') && form.controls['classId'].touched" class="alert alert-danger">A Class is Required</div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" [disabled]="!form.valid" class="btn btn-default">Submit</button>
+  </div>
+
+</form>

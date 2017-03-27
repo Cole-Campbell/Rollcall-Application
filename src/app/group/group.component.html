@@ -1,7 +1,7 @@
 <div *ngFor="let group of groups | async">
-  <div *ngIf="groupId == group.$key">
+  <div *ngIf="groupId == group.$key && group.email == eis.emailId">
     <h1>{{group.name}}</h1>
-    <span *ngIf="group.classId != null">
+    <span *ngIf="group.classId != null; else noGroups">
       <span *ngFor="let v of gas.generateArray(group.classId)">
         <div *ngFor="let classList of classes | async">
           <p *ngIf="v == classList.$key">
@@ -10,6 +10,9 @@
         </div>
       </span>
     </span>
+    <ng-template #noGroups>
+      <p>You have no groups selected</p>
+    </ng-template>
   </div>
 </div>
 <button class="btn btn-default" routerLink="" routerLinkActive="Active">
