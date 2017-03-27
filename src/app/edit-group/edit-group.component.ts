@@ -29,24 +29,9 @@ export class EditGroupComponent implements OnInit {
               public gas: GenerateArrayService,
               public fb: FormBuilder) {
 
-    this.groups = af.database.list('/Groups', this.groupId);
+    this.groups = af.database.list('/Groups');
     this.classes = af.database.list('/ClassLists');
 
-    //console.log(this.groupId);
-
-    this.groups.subscribe(response => {
-       if(this.groupId != null) {
-         this.groupName = response.name;
-
-       }
-
-    });
-
-    this.form = fb.group({
-      'name' : [this.groupName, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(10)])],
-      'archive' : false,
-      'classId' : [[], Validators.required]
-    });
   }
 
   ngOnInit() {
