@@ -6,6 +6,11 @@
         <div *ngFor="let classList of classes | async">
           <p *ngIf="v == classList.$key">
             {{classList.name}}
+            <span *ngFor="let student of students | async">
+                <ul *ngIf="student.classListId == classList.$key">
+                  <li>{{student.name}}</li>
+                </ul>
+            </span>
           </p>
         </div>
       </span>

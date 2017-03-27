@@ -17,6 +17,7 @@ export class GroupComponent implements OnInit {
 
   groups: FirebaseListObservable<any>;
   classes: FirebaseListObservable<any>;
+  students: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire,
               private router: Router,
@@ -24,6 +25,7 @@ export class GroupComponent implements OnInit {
               public eis: EmailIdService) {
     this.groups = af.database.list('/Groups');
     this.classes = af.database.list('/ClassLists');
+    this.students = af.database.list('/Students');
   }
 
   ngOnInit() {

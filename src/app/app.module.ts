@@ -12,6 +12,7 @@ import { RoutingModule } from './routing/routing.module';
 import { NewGroupComponent } from './new-group/new-group.component';
 import { GroupComponent } from './group/group.component';
 import { EditGroupComponent } from './edit-group/edit-group.component';
+import { StudentComponent } from './student/student.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAu2W5XpOR0Cka0CQo4fB7epIsfcNC2J2k",
@@ -33,7 +34,8 @@ const firebaseAuthConfig = {
     HomeComponent,
     NewGroupComponent,
     GroupComponent,
-    EditGroupComponent
+    EditGroupComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,

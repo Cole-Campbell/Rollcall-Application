@@ -1,7 +1,8 @@
 export class Student {
   constructor(
     public name: string,
-    public archive?: boolean,
-    public classId?: number[]
+    public email: string,
+    public studentId: any,
+    public classListId?: number[]
   ) {}
 }
