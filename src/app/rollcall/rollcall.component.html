@@ -20,7 +20,7 @@
               <h2>{{classList.name}}</h2>
               <span *ngFor="let student of students | async">
                 <p *ngIf="student.classListId == v">
-                  <input type="checkbox" [value]=[student.studentId] name="present" ngModel>{{student.name}}
+                  <input type="checkbox" [value]="[student.studentId]" name="present" ngModel> {{student.name}}
                 </p>
               </span>
             </span>

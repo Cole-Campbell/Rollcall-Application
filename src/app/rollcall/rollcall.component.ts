@@ -21,6 +21,8 @@ export class RollcallComponent implements OnInit {
   rollcall: FirebaseListObservable<any>;
   classLists: FirebaseListObservable<any>;
 
+  form: FormGroup;
+
   constructor(public af: AngularFire,
               private router: Router,
               public gas: GenerateArrayService,
@@ -29,6 +31,11 @@ export class RollcallComponent implements OnInit {
     this.students = af.database.list('/Students');
     this.rollcall = af.database.list('/RollCalls');
     this.classLists = af.database.list('/ClassLists');
+
+    this.form = fb.group({
+      'name' : [null, Validators.compose([Validators.required])],
+      'present' : [[], Validators.required]
+    })
   }
 
   ngOnInit() {
@@ -38,7 +45,7 @@ export class RollcallComponent implements OnInit {
   }
 
   submitRollcall(value: any) {
-    this.rollcall.push({name: value.name, timestamp: this.date });
+    this.rollcall.push({name: value.name, present: value.present });
     this.router.navigate(['']);
   }
 
