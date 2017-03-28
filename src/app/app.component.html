@@ -9,14 +9,17 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a routerLink="" routerLinkActive="Active">Home</a></li>
         <li><a routerLink="addStudent" routerLinkActive="Active">Add Student</a></li>
+        <li><a routerLink="addClassList" routerLinkActive="Active">Add Classlist</a></li>
         <li><button class="btn btn-danger" (click)="logout()">Logout</button></li>
       </ul>
     </div>
   </div>
 </nav>
-<div class="app-content">
-  <router-outlet></router-outlet>
-</div>
+<body>
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+</body>
 <footer class="footer">
   <p><i class="fa fa-code fa-sm"></i> with <i class="fa fa-heart fa-sm"></i> by <a href="http://www.colecampbell.design" target="_blank">Cole</a></p>
 </footer>

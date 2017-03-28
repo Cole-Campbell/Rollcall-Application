@@ -4,8 +4,6 @@
     <input class="form-control" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}" type="text" placeholder="Group Name" [formControl]="form.controls['name']">
 
     <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="alert alert-danger">Group Name is Required</div>
-    <div *ngIf="form.controls['name'].hasError('minlength') && form.controls['name'].touched" class="alert alert-danger">Group Name Must Be 3 or More Characters</div>
-    <div *ngIf="form.controls['name'].hasError('maxlength') && form.controls['name'].touched" class="alert alert-danger">Group Name Less Be 10 or More Characters</div>
 
     <input class="form-control" type="hidden" value="{{(af.auth | async)?.auth.email}}"a [formControl]="form.controls['email']">
   </div>

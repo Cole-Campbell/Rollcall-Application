@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire, FirebaseListObservable} from 'angularfire2';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 import { GenerateArrayService } from '../services/generate-array.service';
 
@@ -16,9 +16,6 @@ export class EditGroupComponent implements OnInit {
 
   groupId: any;
 
-  groupName: string;
-  groupClassId: any;
-
   groups: FirebaseListObservable<any>;
   classes: FirebaseListObservable<any>;
 
@@ -26,8 +23,7 @@ export class EditGroupComponent implements OnInit {
 
   constructor(public af: AngularFire,
               private router: Router,
-              public gas: GenerateArrayService,
-              public fb: FormBuilder) {
+              public gas: GenerateArrayService) {
 
     this.groups = af.database.list('/Groups');
     this.classes = af.database.list('/ClassLists');

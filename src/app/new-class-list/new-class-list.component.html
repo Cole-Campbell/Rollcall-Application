@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="addClassList(form.value)">
+  <div class="form-group">
+    <label>Class List</label>
+    <p>Suggested Format: Year-Program-ProgramYear</p>
+    <input class="form-control" [ngClass]="{'has-error':!form.controls['className'].valid && form.controls['className'].touched}" type="text" placeholder="Class List Name" [formControl]="form.controls['className']" required>
+    <div *ngIf="form.controls['className'].hasError('required') && form.controls['className'].touched" class="alert alert-danger">Class Name is Required</div>
+  </div>
+
+  <div class="form-group">
+    <label>Program</label>
+    <p>Select Program</p>
+    <select class="form-control" name="programName" [formControl]="form.controls['programName']" required>
+      <option value="" disabled selected>Select Program For Class List</option>
+      <option value="CMM">CMM</option>
+      <option value="DAP">DAP</option>
+      <option value="GAD">GAD</option>
+    </select>
+    <div *ngIf="form.controls['programName'].hasError('required') && form.controls['programName'].touched" class="alert alert-danger">A Program is Required.</div>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-default" [disabled]="!form.valid" type="submit">Add Class List</button>
+  </div>
+
+</form>

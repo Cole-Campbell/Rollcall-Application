@@ -8,13 +8,17 @@ import { NewGroupComponent } from '../new-group/new-group.component';
 import { GroupComponent } from '../group/group.component';
 import { EditGroupComponent } from '../edit-group/edit-group.component';
 import { StudentComponent } from '../student/student.component';
+import { NewClassListComponent } from '../new-class-list/new-class-list.component';
+import { RollcallComponent } from '../rollcall/rollcall.component';
 
 const routes: Routes = [
 
   {path: 'login', component: LoginComponent },
   {path: 'newGroup', component: NewGroupComponent },
   {path: 'addStudent', component: StudentComponent},
+  {path: 'addClassList', component: NewClassListComponent},
   {path: 'group/:$key', component: GroupComponent },
+  {path: 'rollcall/:key', component: RollcallComponent },
   {path: 'editGroup/:$key', component: EditGroupComponent },
   {path: '', component: HomeComponent },
   {path: '**', redirectTo: 'login', pathMatch: 'full' }

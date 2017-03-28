@@ -18,8 +18,7 @@
     <ng-template #noGroups>
       <p>You have no groups selected</p>
     </ng-template>
+    <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
+    <button class="btn btn-default" [routerLink]="['/rollcall', group.$key]" routerLinkActive="Active">Perform Rollcall</button>
   </div>
 </div>
-<button class="btn btn-default" routerLink="" routerLinkActive="Active">
-  Back
-</button>

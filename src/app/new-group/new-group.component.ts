@@ -25,7 +25,7 @@ export class NewGroupComponent {
     this.groups = af.database.list('/Groups');
 
     this.form = fb.group({
-      'name' : [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(10)])],
+      'name' : [null, Validators.compose([Validators.required])],
       'email' : eis.emailId,
       'archive' : false,
       'classId' : [[], Validators.required]

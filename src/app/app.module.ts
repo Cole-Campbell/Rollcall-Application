@@ -13,6 +13,8 @@ import { NewGroupComponent } from './new-group/new-group.component';
 import { GroupComponent } from './group/group.component';
 import { EditGroupComponent } from './edit-group/edit-group.component';
 import { StudentComponent } from './student/student.component';
+import { NewClassListComponent } from './new-class-list/new-class-list.component';
+import { RollcallComponent } from './rollcall/rollcall.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAu2W5XpOR0Cka0CQo4fB7epIsfcNC2J2k",
@@ -35,7 +37,9 @@ const firebaseAuthConfig = {
     NewGroupComponent,
     GroupComponent,
     EditGroupComponent,
-    StudentComponent
+    StudentComponent,
+    NewClassListComponent,
+    RollcallComponent
   ],
   imports: [
     BrowserModule,
