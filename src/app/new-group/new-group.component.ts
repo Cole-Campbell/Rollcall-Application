@@ -32,7 +32,7 @@ export class NewGroupComponent {
     })
   }
   addGroup(value: any){
-    console.log(value);
+
     this.groups.push({name: value.name, email: value.email, archive: false, classId: value.classId});
     this.router.navigate(['']);
   }

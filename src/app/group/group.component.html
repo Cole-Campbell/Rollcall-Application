@@ -1,5 +1,5 @@
-<div *ngFor="let group of groups | async">
-  <div *ngIf="groupId == group.$key && group.email == eis.emailId">
+<span *ngFor="let group of groups | async">
+  <span *ngIf="groupId == group.$key && group.email == eis.emailId && !showAttendance">
     <h1>{{group.name}}</h1>
     <span *ngIf="group.classId != null; else noGroups">
       <span *ngFor="let v of gas.generateArray(group.classId)">
@@ -18,7 +18,16 @@
     <ng-template #noGroups>
       <p>You have no groups selected</p>
     </ng-template>
+    <hr/>
     <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
     <button class="btn btn-default" [routerLink]="['/rollcall', group.$key]" routerLinkActive="Active">Perform Rollcall</button>
-  </div>
-</div>
+  </span>
+  <span *ngIf=""></span>
+
+
+
+</span>
+<button class="btn btn-primary text-right"
+        (click)="toggleAttendance()">
+  {{ showAttendance ? 'Hide' : 'Show' }} Attendance
+</button>

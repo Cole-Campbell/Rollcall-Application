@@ -13,6 +13,8 @@ import { EmailIdService } from '../services/email-id.service';
 })
 export class GroupComponent implements OnInit {
 
+  showAttendance: boolean = false;
+
   groupId: String;
 
   groups: FirebaseListObservable<any>;
@@ -32,6 +34,10 @@ export class GroupComponent implements OnInit {
     //console.log(this.router.url);
     //console.log(this.router.url.split('/')[2]);
     this.groupId = this.router.url.split('/')[2];
+  }
+
+  toggleAttendance(){
+    this.showAttendance = !this.showAttendance;
   }
 
 }

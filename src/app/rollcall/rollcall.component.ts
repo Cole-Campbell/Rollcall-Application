@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AngularFire, FirebaseListObservable} from 'angularfire2';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
+import * as firebase from 'firebase';
+
 import { GenerateArrayService } from '../services/generate-array.service';
 
 @Component({
@@ -47,8 +49,16 @@ export class RollcallComponent implements OnInit {
   }
 
   submitRollcall(value: any) {
-    console.log(value);
-    this.rollcall.push({name: value.name, groupKey: value.groupKey, attendance: [[value.studentId , value.present]] });
+    var studentAttendance = [];
+    var timestamp = new Date().toString();
+
+    for(var i in value){
+      if(i != "groupKey" && i != "name"){
+        studentAttendance.push([i, value[i]]);
+      }
+    }
+
+    this.rollcall.push({name: value.name, groupKey: value.groupKey, present: studentAttendance, time : timestamp});
     this.router.navigate(['']);
   }
 

@@ -18,17 +18,17 @@
               <h2>{{classList.name}}</h2>
               <span *ngFor="let student of students | async">
                 <p *ngIf="student.classListId == v">
-                  <input type="checkbox" name="present" ngModel=true> {{student.name}}
+                  <input type="checkbox" [name]="student.studentId" ngModel=true> {{student.name}}
                   <input type="hidden" class="form-control" name="groupKey" [(ngModel)]="group.$key" required>
-                  <input type="hidden" class="form-control" name="studentId" [(ngModel)]="student.studentId" required>
+                  <input type="hidden" class="form-control" name="studentId" [value]="student.studentId" required>
                 </p>
               </span>
             </span>
         </span>
       </div>
 
-      <button class="btn btn-default" type="submit">Submit Rollcall</button>
       <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
+      <button class="btn btn-default" type="submit">Submit Rollcall</button>
 
     </form>
   </span>
