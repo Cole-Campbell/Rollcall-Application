@@ -1,6 +1,11 @@
+<!-- Initially going through all groups with an async pipe to ensure it can be read throughout
+ the code to come. Declaring each instance to be stored in the variable group. Through the groups,
+ the group key that is equal to the groupId variable, pulled from the URL, will be displayed.-->
 <div *ngFor="let group of groups | async">
   <span *ngIf="group.$key == groupId">
 
+    <!-- Data Driven form declared. On submit, the function submitRollCall will be passed
+     the form value and execute.-->
     <form #f="ngForm" (ngSubmit)="submitRollcall(f.value)">
 
       <h1 class="form-group">
@@ -11,16 +16,21 @@
       <hr/>
 
       <h2>Students</h2>
-
+      <!-- Going through class lists, breaking down the classID to get each individual object within that
+       array and then comparing them to the classList Key. If they match, then the class name is shown
+       and the loop continues. Continues by getting all students and checking to see if the student's
+       classListId is equal to one of the classIds pulled from the group.-->
       <div class="form-group" *ngFor="let classList of classLists | async">
         <span *ngFor="let v of gas.generateArray(group.classId)">
             <span *ngIf="classList.$key == v">
               <h2>{{classList.name}}</h2>
               <span *ngFor="let student of students | async">
                 <p *ngIf="student.classListId == v">
+                  <!-- Student ID is placed as the name of the checkbox. If checked, then it is true
+                   unchecked and it is false. Hidden groups are put through. These hidden group contains
+                   the group key to link the rollcall to the group.-->
                   <input type="checkbox" [name]="student.studentId" ngModel=true> {{student.name}}
                   <input type="hidden" class="form-control" name="groupKey" [(ngModel)]="group.$key" required>
-                  <input type="hidden" class="form-control" name="studentId" [value]="student.studentId" required>
                 </p>
               </span>
             </span>

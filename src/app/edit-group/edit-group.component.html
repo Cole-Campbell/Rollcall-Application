@@ -1,9 +1,13 @@
 <div *ngFor="let group of groups | async">
   <span *ngIf="group.$key == groupId">
+
     <form #f="ngForm" (ngSubmit)="editGroup(f.value)">
       <div class="form-group">
+
         <h1 *ngIf="group.name != ''; else fillerText">{{group.name}}</h1>
+
         <ng-template #fillerText><h1>Group Name</h1></ng-template>
+
         <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="group.name" required>
         <div [hidden]="name.valid||(name.pristine&&!f.submitted)" class="text-danger alert alert-danger">Name Required.</div>
       </div>
@@ -13,12 +17,15 @@
         <h2>Current Selected Classes</h2>
         <span *ngFor="let v of gas.generateArray(group.classId)">
           <span *ngFor="let classList of classes | async">
+
             <ul>
               <li *ngIf="v == classList.$key">{{classList.name}}</li>
             </ul>
+
           </span>
         </span>
       </div>
+
       <ng-template #noGroup><h2>No Group Selected</h2></ng-template>
 
       <div class="form-group">

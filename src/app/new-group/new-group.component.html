@@ -1,13 +1,14 @@
+<!-- Declaring the formgroup form. Upon submit, the form value will be passed. -->
 <form [formGroup]="form" (ngSubmit)="addGroup(form.value)">
+
+  <!-- Form validation required for the Group Name entry. -->
   <div class="form-group">
     <label>Group Name</label>
     <input class="form-control" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}" type="text" placeholder="Group Name" [formControl]="form.controls['name']">
-
     <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="alert alert-danger">Group Name is Required</div>
-
-    <input class="form-control" type="hidden" value="{{(af.auth | async)?.auth.email}}"a [formControl]="form.controls['email']">
   </div>
 
+  <!--Multiple select used for selecting which class list a user wants within their group-->
   <div class="form-group">
     <label>Class List</label>
     <p>Select one or multiple classes you wish to add in this group.</p>

@@ -31,11 +31,11 @@ export class StudentComponent {
 
     //Declaring the form is a Form Builder Group. Within this form builder validators are declared
     //and form names are given. The form in the template will need to be strict to this data.
-    //Pattern Validator has been added to using Regex to find a
+    //Pattern Validator has been added to using Regex to find K at the starting of the string
     this.form = fb.group({
       'name' : ['', Validators.compose([Validators.required])],
       'email' : [null, Validators.email],
-      'studentId' : ['', Validators.compose([Validators.required, Validators.maxLength(9), Validators.minLength(9), Validators.pattern(`^\K.*`)])],
+      'studentId' : ['', Validators.compose([Validators.required, Validators.maxLength(9), Validators.minLength(9), Validators.pattern(`^\[K|k].*`)])],
       'classListId' : [null, Validators.required]
     })
   }

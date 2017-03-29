@@ -24,18 +24,21 @@ function will be called and the form.value will be passed from this form.-->
       <div *ngIf="form.value.studentId == student.studentId" [ngClass]="{'has-error':!form.controls['studentId'].valid}"  class="alert alert-danger">Student ID Is Already In Use</div>
     </div>
 
+    <!-- Validators for Student Number. Must be required, 9 characters and start with the letter K -->
     <div *ngIf="form.controls['studentId'].hasError('required') && form.controls['studentId'].touched" class="alert alert-danger">Invalid Student Number</div>
     <div *ngIf="form.controls['studentId'].hasError('maxlength') && form.controls['studentId'].touched" class="alert alert-danger">Invalid Student Number</div>
     <div *ngIf="form.controls['studentId'].hasError('pattern') && form.controls['studentId'].touched" class="alert alert-danger">Student ID Must Start with K</div>
     <div *ngIf="form.controls['studentId'].hasError('minlength') && form.controls['studentId'].touched" class="alert alert-danger">Invalid Student Number</div>
   </div>
 
+  <!-- Validators check to see if the value entered is an email. -->
   <div class="form-group">
     <label>Email Address</label>
     <input class="form-control" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}" type="text" placeholder="Email Address" [formControl]="form.controls['email']" required>
     <div *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched" class="alert alert-danger">Invalid Email</div>
   </div>
 
+  <!-- Classlist validator ensures a value is selected. -->
   <div class="form-group">
     <label>Class List</label>
     <p>Select one or multiple classes you wish to add in this group.</p>
@@ -46,6 +49,7 @@ function will be called and the form.value will be passed from this form.-->
     <div *ngIf="form.controls['classListId'].hasError('required') && form.controls['classListId'].touched" class="alert alert-danger">A Class is Required</div>
   </div>
 
+  <!-- Button is disabled if not all form fields are valid -->
   <div class="form-group">
     <button class="btn btn-default" [disabled]="!form.valid" type="submit">Add Student</button>
   </div>

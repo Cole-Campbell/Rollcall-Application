@@ -1,5 +1,6 @@
 <span *ngFor="let group of groups | async">
   <span *ngIf="groupId == group.$key && group.email == eis.emailId ">
+
     <h1>{{group.name}}</h1>
     <span *ngIf="!showAttendance">
       <span *ngIf="group.classId != null; else noGroups">
@@ -16,9 +17,11 @@
           </div>
         </span>
       </span>
+
       <ng-template #noGroups>
         <p>You have no groups selected</p>
       </ng-template>
+
       <hr/>
       <span class="btn-group">
         <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
@@ -27,26 +30,33 @@
         <button class="btn btn-success" [routerLink]="['/rollcall', group.$key]" routerLinkActive="Active">Perform Rollcall</button>
       </span>
     </span>
+
     <span *ngFor="let rollcall of rollcalls | async">
       <span *ngIf="groupId == group.$key && groupId == rollcall.groupKey && showAttendance">
+
         <h3>{{rollcall.time | date:'medium'}}</h3>
         <hr/>
+
         <span *ngFor="let v of gas.generateArray(group.classId)">
           <span *ngFor="let classList of classes | async">
             <div *ngIf="v == classList.$key">
               <h4>{{classList.name}}</h4>
+
               <ul *ngFor="let student of students | async">
                 <li *ngIf="student.classListId == classList.$key">
                   <span *ngFor="let p of gas.generateArray(rollcall.present)">
                     <span *ngIf="p[0] == student.studentId">
                       {{student.name}} <span *ngIf="p[1] != false; else absent" class="text-success">was present <i class="fa fa-check fa-sm"></i></span>
+
                       <ng-template #absent>
                         was absent <i class="fa fa-times fa-sm text-danger"></i>
                       </ng-template>
+
                     </span>
                   </span>
                 </li>
               </ul>
+
             </div>
           </span>
         </span>
@@ -55,7 +65,4 @@
     </span>
   </span>
 </span>
-<button class="btn btn-primary text-right"
-        (click)="toggleAttendance()">
-  {{ showAttendance ? 'Hide' : 'Show' }} Attendance
-</button>
+<button class="btn btn-primary text-right" (click)="toggleAttendance()"> {{ showAttendance ? 'Hide' : 'Show' }} Attendance</button>

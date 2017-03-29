@@ -11,12 +11,16 @@ import { EmailIdService } from '../services/email-id.service';
   styleUrls: ['./group.component.css'],
   providers: [GenerateArrayService, EmailIdService]
 })
+
 export class GroupComponent implements OnInit {
 
+  //Setting Attendance to false to ensure users are showed which classlists are within a group
   showAttendance: boolean = false;
 
+  //GroupId variable being set. The group ID is pulled from the URL and then bound
   groupId: String;
 
+  //Declaring the various Observable variables for binding later.
   groups: FirebaseListObservable<any>;
   classes: FirebaseListObservable<any>;
   students: FirebaseListObservable<any>;
@@ -26,6 +30,8 @@ export class GroupComponent implements OnInit {
               private router: Router,
               public gas: GenerateArrayService,
               public eis: EmailIdService) {
+
+    //Binding the variables with the database routes they will correspond with.
     this.groups = af.database.list('/Groups');
     this.classes = af.database.list('/ClassLists');
     this.rollcalls = af.database.list('/RollCalls');
@@ -33,11 +39,11 @@ export class GroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    //console.log(this.router.url);
-    //console.log(this.router.url.split('/')[2]);
+    //Binding the router URL fragment to the groupId
     this.groupId = this.router.url.split('/')[2];
   }
 
+  //Function to change the value of showAttendance when called.
   toggleAttendance(){
     this.showAttendance = !this.showAttendance;
   }
