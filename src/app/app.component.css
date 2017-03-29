@@ -29,3 +29,7 @@ body{
   padding: 25px;
   background-color: #ffffff;
 }
+
+.btn-danger{
+  margin-top: 7px;
+}

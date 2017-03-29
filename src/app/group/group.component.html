@@ -21,7 +21,7 @@
       </ng-template>
       <hr/>
       <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
-      <button class="btn btn-default" [routerLink]="['/rollcall', group.$key]" routerLinkActive="Active">Perform Rollcall</button>
+      <button class="btn btn-success" [routerLink]="['/rollcall', group.$key]" routerLinkActive="Active">Perform Rollcall</button>
     </span>
     <span *ngFor="let rollcall of rollcalls | async">
       <span *ngIf="groupId == group.$key && groupId == rollcall.groupKey && showAttendance">

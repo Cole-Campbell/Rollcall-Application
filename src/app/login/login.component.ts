@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 
 @Component({
@@ -11,7 +11,9 @@ import { AngularFire } from 'angularfire2';
 
 export class LoginComponent {
   constructor(public af: AngularFire) {}
+
   login() {
+    console.log(this.af.auth);
     this.af.auth.login();
   }
 }

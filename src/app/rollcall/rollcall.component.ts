@@ -59,7 +59,7 @@ export class RollcallComponent implements OnInit {
     }
 
     this.rollcall.push({name: value.name, groupKey: value.groupKey, present: studentAttendance, time : timestamp});
-    this.router.navigate(['']);
+    this.router.navigate(['group', this.groupId]);
   }
 
 }

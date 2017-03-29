@@ -1,9 +1,12 @@
+<h1>Groups</h1>
 <div *ngFor="let group of groups | async ">
   <span *ngIf="group.archive == false && !showArchive && group.email == emailId">
     <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
-    <button  [routerLink]="['/editGroup', group.$key]">Edit Group</button>
-    <button (click)="archiveGroup(group.$key)">Archive Group</button>
-    <button (click)="deleteGroup(group.$key)">Delete Group</button>
+
+    <button class="btn btn-default hidden-xs" [routerLink]="['/editGroup', group.$key]">Edit Group</button>
+    <button class="btn btn-warning hidden-xs" (click)="archiveGroup(group.$key)">Archive Group</button>
+    <button class="btn btn-danger hidden-xs" (click)="deleteGroup(group.$key)">Delete Group</button>
+    <hr style="width: 60%;"/>
   </span>
 </div>
 
@@ -11,14 +14,12 @@
 <div *ngFor="let group of groups | async ">
   <span *ngIf="group.archive == true && showArchive && group.email == emailId">
     <h2><a [routerLink]="['/group', group.$key]">{{group.name}}</a></h2>
-    <button (click)="unarchiveGroup(group.$key)">Unarchive Group</button>
-    <button (click)="deleteGroup(group.$key)">Delete Group</button>
+    <button class="btn btn-warning hidden-xs" (click)="unarchiveGroup(group.$key)">Unarchive Group</button>
+    <button class="btn btn-danger hidden-xs" (click)="deleteGroup(group.$key)">Delete Group</button>
   </span>
 </div>
-<hr/>
-<button class="btn btn-primary"
+<button class="btn btn-primary hidden-xs"
         (click)="toggleArchive()">
         {{ showArchive ? 'Hide' : 'Show' }} Archive
 </button>
-<hr/>
-<button routerLink="newGroup" routerLinkActive="Active">New Group</button>
+<button class="btn btn-success hidden-xs" routerLink="newGroup" routerLinkActive="Active">New Group</button>

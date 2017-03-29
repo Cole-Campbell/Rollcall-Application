@@ -1,16 +1,20 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="" routerLinkActive="Active">Firebase Crud</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsemenu" aria-expanded="false">
+        <span class="sr-only">Toggle Navigation</span>
+        <i class="fa fa-bars fa-lg" style="color:#333;"></i>
+      </button>
+      <a class="navbar-brand" routerLink="" routerLinkActive="Active">Roll Call</a>
     </div>
     <!-- If the variable isLoggedIn is true, then the user will see this navigation,
      including the logout button.-->
-    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="collapsemenu">
       <ul class="nav navbar-nav navbar-right">
         <li><a routerLink="" routerLinkActive="Active">Home</a></li>
-        <li><a routerLink="addStudent" routerLinkActive="Active">Add Student</a></li>
-        <li><a routerLink="addClassList" routerLinkActive="Active">Add Classlist</a></li>
-        <li><button class="btn btn-danger" (click)="logout()">Logout</button></li>
+        <li><a class="hidden-xs" routerLink="addStudent" routerLinkActive="Active">Add Student</a></li>
+        <li><a class="hidden-xs" routerLink="addClassList" routerLinkActive="Active">Add Classlist</a></li>
+        <li><button class="btn btn-danger col-xs-12" (click)="logout()">Logout</button></li>
       </ul>
     </div>
   </div>

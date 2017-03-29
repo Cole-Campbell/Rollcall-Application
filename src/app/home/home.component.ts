@@ -1,9 +1,6 @@
 //Basic imports for use throughout the application
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { Router } from '@angular/router';
-
-import { Student } from '../interfaces/student';
 
 @Component({
   selector: 'app-home',
@@ -18,11 +15,14 @@ export class HomeComponent {
 
   emailId: any;
 
-  constructor(public af: AngularFire, private router: Router){
+  constructor(public af: AngularFire) {
 
-    af.auth.subscribe(response => {
-      this.emailId = response.auth.email;
-    });
+
+      this.af.auth.subscribe(response => {
+        if (response != null) {
+          this.emailId = response.auth.email;
+        }
+      });
 
     this.groups = af.database.list('/Groups');
   }
