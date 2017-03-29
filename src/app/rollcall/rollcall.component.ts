@@ -19,6 +19,7 @@ export class RollcallComponent implements OnInit {
   groups: FirebaseListObservable<any>;
   students: FirebaseListObservable<any>;
   rollcall: FirebaseListObservable<any>;
+  rollcallEntry: FirebaseListObservable<any>;
   classLists: FirebaseListObservable<any>;
 
   form: FormGroup;
@@ -31,6 +32,7 @@ export class RollcallComponent implements OnInit {
     this.students = af.database.list('/Students');
     this.rollcall = af.database.list('/RollCalls');
     this.classLists = af.database.list('/ClassLists');
+    this.rollcallEntry= af.database.list('/RollCallEntry');
 
     this.form = fb.group({
       'name' : [null, Validators.compose([Validators.required])],
@@ -45,7 +47,8 @@ export class RollcallComponent implements OnInit {
   }
 
   submitRollcall(value: any) {
-    this.rollcall.push({name: value.name, groupKey: value.groupKey, [value.studentId]: [value.present] });
+    console.log(value);
+    this.rollcall.push({name: value.name, groupKey: value.groupKey, attendance: [[value.studentId , value.present]] });
     this.router.navigate(['']);
   }
 
