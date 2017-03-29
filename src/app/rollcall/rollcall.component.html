@@ -3,12 +3,10 @@
 
     <form #f="ngForm" (ngSubmit)="submitRollcall(f.value)">
 
-      <div class="form-group">
-        <h1 *ngIf="group.name != ''; else fillerText">{{group.name}}</h1>
-        <ng-template #fillerText><h1>Group Name</h1></ng-template>
-        <input type="hidden" class="form-control" name="name" #name="ngModel" [(ngModel)]="group.name" required>
-        <div [hidden]="name.valid||(name.pristine&&!f.submitted)" class="text-danger alert alert-danger">Name Required.</div>
-      </div>
+      <h1 class="form-group">
+        {{group.name}}
+      </h1>
+      <input type="hidden" class="form-control" name="name" [(ngModel)]="group.name" required>
 
       <hr/>
 
@@ -20,14 +18,16 @@
               <h2>{{classList.name}}</h2>
               <span *ngFor="let student of students | async">
                 <p *ngIf="student.classListId == v">
-                  <input type="checkbox" [value]="[student.studentId]" name="present" ngModel> {{student.name}}
+                  <input type="checkbox" [value]=[student.studentId] name="present" ngModel> {{student.name}}
+                  <input type="hidden" class="form-control" name="groupKey" [(ngModel)]="group.$key" required>
+                  <input type="hidden" class="form-control" name="studentId" [(ngModel)]="student.studentId" required>
                 </p>
               </span>
             </span>
-          </span>
+        </span>
       </div>
 
-      <button class="btn btn-default" [disabled]="group.classId.length < 1 || group.name == ''" type="submit">Submit Rollcall</button>
+      <button class="btn btn-default" type="submit">Submit Rollcall</button>
       <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
 
     </form>

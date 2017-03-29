@@ -45,7 +45,7 @@ export class RollcallComponent implements OnInit {
   }
 
   submitRollcall(value: any) {
-    this.rollcall.push({name: value.name, present: value.present });
+    this.rollcall.push({name: value.name, groupKey: value.groupKey, [value.studentId]: [value.present] });
     this.router.navigate(['']);
   }
 
