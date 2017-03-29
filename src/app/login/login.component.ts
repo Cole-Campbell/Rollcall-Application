@@ -4,7 +4,7 @@ import { AngularFire } from 'angularfire2';
 @Component({
   selector: 'app-login',
   template: `
-  <button (click)="login()">Login</button>
+  <button class="btn btn-success center-block" (click)="login()">Login via Google</button>
   `,
   styles: []
 })

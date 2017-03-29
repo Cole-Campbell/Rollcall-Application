@@ -1,15 +1,18 @@
+<!-- Creating the navigation which will be used throughout the application. This navigation
+ utilized Bootstrap Framework and Fontawesome. This allowed for the design to be mostly user
+ friendly across devices, and allowed for easier media queries.-->
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
+      <a class="navbar-brand" routerLink="" routerLinkActive="Active">Roll Call</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsemenu" aria-expanded="false">
         <span class="sr-only">Toggle Navigation</span>
         <i class="fa fa-bars fa-lg" style="color:#333;"></i>
       </button>
-      <a class="navbar-brand" routerLink="" routerLinkActive="Active">Roll Call</a>
     </div>
     <!-- If the variable isLoggedIn is true, then the user will see this navigation,
      including the logout button.-->
-    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="collapsemenu">
+    <div  class="collapse navbar-collapse" id="collapsemenu">
       <ul class="nav navbar-nav navbar-right">
         <li><a routerLink="" routerLinkActive="Active">Home</a></li>
         <li><a class="hidden-xs" routerLink="addStudent" routerLinkActive="Active">Add Student</a></li>
@@ -24,6 +27,7 @@
     <router-outlet></router-outlet>
   </div>
 </body>
+<!-- Custom Footer created to brand the application. -->
 <footer class="footer">
   <p><i class="fa fa-code fa-sm"></i> with <i class="fa fa-heart fa-sm"></i> by <a href="http://www.colecampbell.design" target="_blank">Cole</a></p>
 </footer>

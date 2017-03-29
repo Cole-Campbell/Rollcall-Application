@@ -1,10 +1,22 @@
+<!-- Form Groups were used to organize the form throughout and to give it some CSS Styling through
+Bootstrap.-->
+
+<!--Declaring the form group to the form declared in the .ts file. On submit, the addStudent
+function will be called and the form.value will be passed from this form.-->
 <form [formGroup]="form" (ngSubmit)="addStudent(form.value)">
+
+  <!-- Form is given an error if the name value is not valid, and if the field has been touched.
+   The touched was added to ensure users were not coming directly to a page which was full of warnings.
+   This form only required a name for validation. Originally, a user was forced to have 3 - 10 characters
+   but this kind of validation did not seem necessary as a user should be able to call their group whatever
+   they wanted.-->
   <div class="form-group">
     <label>Student Name</label>
     <input class="form-control" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}" type="text" placeholder="Student Name" [formControl]="form.controls['name']" required>
     <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="alert alert-danger">Group Name is Required</div>
   </div>
 
+  <!-- Student number form. This form requires that a user enters a value that is 9 characters long. -->
   <div class="form-group">
     <label>Student Number (K00000000)</label>
     <input class="form-control" [ngClass]="{'has-error':!form.controls['studentId'].valid && form.controls['studentId'].touched}" type="text" placeholder="Student Number" [formControl]="form.controls['studentId']" required>
@@ -14,6 +26,7 @@
 
     <div *ngIf="form.controls['studentId'].hasError('required') && form.controls['studentId'].touched" class="alert alert-danger">Invalid Student Number</div>
     <div *ngIf="form.controls['studentId'].hasError('maxlength') && form.controls['studentId'].touched" class="alert alert-danger">Invalid Student Number</div>
+    <div *ngIf="form.controls['studentId'].hasError('pattern') && form.controls['studentId'].touched" class="alert alert-danger">Student ID Must Start with K</div>
     <div *ngIf="form.controls['studentId'].hasError('minlength') && form.controls['studentId'].touched" class="alert alert-danger">Invalid Student Number</div>
   </div>
 

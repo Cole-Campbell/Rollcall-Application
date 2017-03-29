@@ -1,3 +1,7 @@
+/* Styling specific to the app component, and any children of it. As it is the main component
+ the styles will be carried across to all components. Most styles are specific, so they should
+ not cause issues throughout the website.*/
+
 @import '~font-awesome/css/font-awesome.css';
 
 .footer{
