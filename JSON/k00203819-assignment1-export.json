@@ -35,6 +35,18 @@
       "name" : "CMM FWD",
       "present" : [ [ "K00203819", "true" ] ],
       "time" : "Thu Mar 30 2017 01:02:30 GMT+0100 (IST)"
+    },
+    "-KgR_aVzexvwqeQQb--D" : {
+      "groupKey" : "-KgRWInkL38QPT05-NLW",
+      "name" : "CMM FWD",
+      "present" : [ [ "K00203819", "true" ], [ "K00184007", "true" ] ],
+      "time" : "Thu Mar 30 2017 01:21:11 GMT+0100 (IST)"
+    },
+    "-KgRaaW8TxX3vpVm3LOO" : {
+      "groupKey" : "-KgRWInkL38QPT05-NLW",
+      "name" : "CMM FWD",
+      "present" : [ [ "K00203819", "true" ], [ "K00184007", false ], [ "K00184900", "true" ] ],
+      "time" : "Thu Mar 30 2017 01:25:33 GMT+0100 (IST)"
     }
   },
   "Students" : {
@@ -43,6 +55,18 @@
       "email" : "k00203819@student.lit.ie",
       "name" : "Cole",
       "studentId" : "K00203819"
+    },
+    "-KgR_6eFI2gB-fab6Y6h" : {
+      "classListId" : "-KgRVLf_5qrjnyrvYlsy",
+      "email" : "K00184007@student.lit.ie",
+      "name" : "Eiren",
+      "studentId" : "K00184007"
+    },
+    "-KgR_jrsbtCQvaS2F-q6" : {
+      "classListId" : "-KgRVLf_5qrjnyrvYlsy",
+      "email" : "K00184900@lit.ie",
+      "name" : "Laura",
+      "studentId" : "K00184900"
     }
   }
 }
