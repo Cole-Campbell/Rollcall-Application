@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'addClassList', component: NewClassListComponent},
   {path: 'group/:$key', component: GroupComponent },
   {path: 'rollcall/:key', component: RollcallComponent },
-  {path: 'editGroup/:$key', component: EditGroupComponent },
+  {path: 'editGroup/:key', component: EditGroupComponent },
   {path: '', component: HomeComponent },
   {path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];

@@ -23,12 +23,8 @@
       </ng-template>
 
       <hr/>
-      <span class="btn-group">
-        <button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
-      </span>
-      <span class="btn-group">
         <button class="btn btn-success" [routerLink]="['/rollcall', group.$key]" routerLinkActive="Active">Perform Rollcall</button>
-      </span>
+
     </span>
 
     <span *ngFor="let rollcall of rollcalls | async">
@@ -66,3 +62,4 @@
   </span>
 </span>
 <button class="btn btn-primary text-right" (click)="toggleAttendance()"> {{ showAttendance ? 'Hide' : 'Show' }} Attendance</button>
+<button class="btn btn-default" routerLink="" routerLinkActive="Active">Back</button>
