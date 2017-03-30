@@ -43,18 +43,18 @@
               <h4>{{classList.name}}</h4>
 
               <ul *ngFor="let student of students | async">
-                <li *ngIf="student.classListId == classList.$key">
+                <span *ngIf="student.classListId == classList.$key">
                   <span *ngFor="let p of gas.generateArray(rollcall.present)">
-                    <span *ngIf="p[0] == student.studentId">
+                    <li *ngIf="p[0] == student.studentId && p[0] != ''">
                       {{student.name}} <span *ngIf="p[1] != false; else absent" class="text-success">was present <i class="fa fa-check fa-sm"></i></span>
 
                       <ng-template #absent>
                         was absent <i class="fa fa-times fa-sm text-danger"></i>
                       </ng-template>
 
-                    </span>
+                    </li>
                   </span>
-                </li>
+                </span>
               </ul>
 
             </div>

@@ -1,0 +1,48 @@
+{
+  "ClassLists" : {
+    "-KgRVLf_5qrjnyrvYlsy" : {
+      "name" : "2017-CMM-Yr4",
+      "program" : "CMM",
+      "year" : "4"
+    },
+    "-KgRVO8XqfzXEb45dpsj" : {
+      "name" : "2017-CMM-Yr3",
+      "program" : "CMM",
+      "year" : "3"
+    },
+    "-KgRVQEd-HFUwKvwtOS2" : {
+      "name" : "2017-CMM-Yr2",
+      "program" : "CMM",
+      "year" : "2"
+    },
+    "-KgRVS2tCKQNNgkEZeF-" : {
+      "name" : "2017-CMM-Yr1",
+      "program" : "CMM",
+      "year" : "1"
+    }
+  },
+  "Groups" : {
+    "-KgRWInkL38QPT05-NLW" : {
+      "archive" : false,
+      "classId" : [ [ "-KgRVLf_5qrjnyrvYlsy" ] ],
+      "email" : "cole.william.campbell@gmail.com",
+      "name" : "CMM FWD"
+    }
+  },
+  "RollCalls" : {
+    "-KgRWJsmJsxki5TFzvB7" : {
+      "groupKey" : "-KgRWInkL38QPT05-NLW",
+      "name" : "CMM FWD",
+      "present" : [ [ "K00203819", "true" ] ],
+      "time" : "Thu Mar 30 2017 01:02:30 GMT+0100 (IST)"
+    }
+  },
+  "Students" : {
+    "-KgRWGE6OWpT1nJKG6Xx" : {
+      "classListId" : "-KgRVLf_5qrjnyrvYlsy",
+      "email" : "k00203819@student.lit.ie",
+      "name" : "Cole",
+      "studentId" : "K00203819"
+    }
+  }
+}
