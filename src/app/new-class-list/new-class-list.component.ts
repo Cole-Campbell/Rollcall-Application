@@ -26,7 +26,7 @@ export class NewClassListComponent {
 
     //Declaring the names of fields within the form, defauly values and validators
     this.form = fb.group({
-      'className' : ['Classlist Name', Validators.compose([Validators.required])],
+      'className' : [null, Validators.compose([Validators.required])],
       'programName' : ['CMM', Validators.required],
       'year' : ['1', Validators.required]
     })
