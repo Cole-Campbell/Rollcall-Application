@@ -49,7 +49,7 @@ const firebaseAuthConfig = {
     FormsModule,
     HttpModule,
     RoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig, 'Roll Call'),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     ReactiveFormsModule
   ],
   providers: [],
