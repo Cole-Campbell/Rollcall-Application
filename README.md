@@ -1,8 +1,6 @@
 ## K00203819 Cole Campbell Roll Call Application
 ## March 30th, 2017
 
-Live URL: http://dev.colecampbell.design/FWD/
-
 Github Repo URL: https://github.com/LIT-CM-WDF/ColeCampbell_ProjectRepo
 
 This Angular application was created using Angular CLI. Steps to launch:
